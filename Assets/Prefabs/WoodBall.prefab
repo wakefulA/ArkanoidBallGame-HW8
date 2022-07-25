@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3908981479036766982}
   - component: {fileID: 7981214754061612115}
-  - component: {fileID: 1377114608}
   - component: {fileID: 697540456826822005}
+  - component: {fileID: 1377114608}
   m_Layer: 0
   m_Name: WoodBall
   m_TagString: Untagged
@@ -86,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1377114608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988299794642723999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1e103632024f6eb6460162a97c091e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &697540456826822005
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -114,3 +102,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1377114608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988299794642723999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1e103632024f6eb6460162a97c091e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: 10
+  _sprites: []
+  _spriteRenderer: {fileID: 7981214754061612115}

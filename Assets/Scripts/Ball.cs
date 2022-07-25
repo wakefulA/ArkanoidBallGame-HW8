@@ -1,17 +1,45 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
     #region Variables
 
+    private Vector2 _startDirection;
+
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private Vector2 _startDirection;
     [SerializeField] private Pad _pad;
+
+    [SerializeField] private float _speed = 10f;
+
+    [Range(-1, 1)]
+    [SerializeField] private float _xMin;
+
+    [Range(-1, 1)]
+    [SerializeField] private float _xMax;
+
+    [Range(0, 1)]
+    [SerializeField] private float _yMin;
+
+    [Range(0, 1)]
+    [SerializeField] private float _yMax;
 
     #endregion
 
 
     #region Unity lifecycle
+
+    private void BallDirection()
+
+    {
+        Vector2 randomDirection = new Vector2(Random.Range(_xMin, _xMax), Random.Range(_yMin, _yMax));
+        _startDirection = randomDirection.normalized * _speed;
+    }
+
+    private void Awake()
+    {
+        BallDirection();
+    }
 
     public void OnDrawGizmos()
     {

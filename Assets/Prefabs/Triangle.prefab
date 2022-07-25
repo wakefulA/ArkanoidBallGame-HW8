@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3927289506594945687}
   - component: {fileID: 7831700200972526674}
   - component: {fileID: 2739505625639269325}
-  - component: {fileID: 8909221990231628533}
   - component: {fileID: 1790556602}
   m_Layer: 0
   m_Name: Triangle
@@ -119,18 +118,6 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.25}
       - {x: 0.5, y: -0.20714286}
       - {x: 0.057142857, y: 0.25}
---- !u!114 &8909221990231628533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174265104346764114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1e103632024f6eb6460162a97c091e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1790556602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1e103632024f6eb6460162a97c091e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 10
+  _sprites: []
+  _spriteRenderer: {fileID: 7831700200972526674}
