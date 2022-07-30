@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    [SerializeField] private Image _pausePanel;
-
     private static Pause _instance;
     public static Pause Instance => _instance;
 
@@ -17,7 +14,6 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();
-        PausePanel();
     }
 
     private void Awake()
@@ -33,25 +29,10 @@ public class Pause : MonoBehaviour
     }
 
     #endregion
-
-
-    private void PausePanel()
-    {
-        if (_isPaused == true)
-        {
-            _pausePanel.gameObject.SetActive(true);
-        }
-
-        if (_isPaused == false)
-        {
-            _pausePanel.gameObject.SetActive(false);
-        }
-    }
-
-
+    
     #region Private methods
 
-    private void TogglePause()
+    public void TogglePause()
     {
         _isPaused = !_isPaused;
         Time.timeScale = _isPaused ? 0 : 1;
