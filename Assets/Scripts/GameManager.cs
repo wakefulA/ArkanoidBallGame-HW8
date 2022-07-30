@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
-    public int _lifeGame;
+    public int LifeGame;
 
     public static GameManager Instance => _instance;
 
@@ -43,10 +43,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _score.text = $"Score {Score}";
-        _lifeGames.text = $"Life {_lifeGame}";
+        _lifeGames.text = $"Life {LifeGame}";
 
         if (_isStarted)
+        {
             return;
+        }
+            
         _ball.MoveWithPad();
 
         if (Input.GetMouseButtonDown(0))
@@ -64,6 +67,7 @@ public class GameManager : MonoBehaviour
         }
 
         _instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     #endregion
@@ -93,4 +97,13 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+
+    public void LoseLife()
+    {
+        LifeGame--;
+        _isStarted = false;
+        _ball.Stop();
+        // TODO: logic with ball
+    }
 }

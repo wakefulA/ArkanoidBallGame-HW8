@@ -68,4 +68,10 @@ public class Ball : MonoBehaviour
     }
 
     #endregion
+
+
+    public void Stop()
+    {
+        _rb.velocity = Vector2.zero;
+    }
 }

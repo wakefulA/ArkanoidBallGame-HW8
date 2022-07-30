@@ -11,9 +11,8 @@ public class LostZone : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Ball ball))
         {
-            SceneManager.LoadScene(0); 
+            GameManager.Instance.LoseLife();
             
-            GameManager.Instance._lifeGame--;
             
         }
         
