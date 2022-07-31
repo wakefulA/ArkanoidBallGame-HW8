@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviout<GameManager>
 {
     #region Variables
 
-    private static GameManager _instance;
-
+    
     public int LifeGame;
-
-    public static GameManager Instance => _instance;
-
     
     
-
     public bool _isStarted;
 
     #endregion
@@ -38,19 +33,7 @@ public class GameManager : MonoBehaviour
 
     #region Unity lifecycle
 
-  
-
-    private void Awake()
-    {
-        if (_instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+    
 
     #endregion
 
@@ -81,8 +64,6 @@ public class GameManager : MonoBehaviour
     {
         LifeGame--;
         _isStarted = false;
-       
-
-        // TODO: logic with ball
+        
     }
 }

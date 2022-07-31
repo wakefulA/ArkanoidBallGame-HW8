@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-public class Pause : MonoBehaviour
+public class Pause : SingletonMonoBehaviout<Pause>
 {
-    private static Pause _instance;
-    public static Pause Instance => _instance;
-
+   
+    
     public bool _isPaused;
 
 
@@ -16,18 +15,7 @@ public class Pause : MonoBehaviour
             TogglePause();
     }
 
-    private void Awake()
-    {
-        if (_instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
+    
     #endregion
     
     #region Private methods
