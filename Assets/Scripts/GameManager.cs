@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance => _instance;
 
-    [SerializeField] private Ball _ball;
+    
     
 
-    private bool _isStarted;
+    public bool _isStarted;
 
     #endregion
 
@@ -38,22 +38,7 @@ public class GameManager : MonoBehaviour
 
     #region Unity lifecycle
 
-    private void Update()
-    {
-        
-
-        if (_isStarted)
-        {
-            return;
-        }
-            
-        _ball.MoveWithPad();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartBall();
-        }
-    }
+  
 
     private void Awake()
     {
@@ -87,11 +72,7 @@ public class GameManager : MonoBehaviour
 
     #region Private methods
 
-    private void StartBall()
-    {
-        _isStarted = true;
-        _ball.StartMove();
-    }
+   
 
     #endregion
 
@@ -100,7 +81,8 @@ public class GameManager : MonoBehaviour
     {
         LifeGame--;
         _isStarted = false;
-        _ball.Stop();
+       
+
         // TODO: logic with ball
     }
 }

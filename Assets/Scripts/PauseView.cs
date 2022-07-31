@@ -13,11 +13,7 @@ public class PauseView : MonoBehaviour
         }
 
         else _pausePanel.gameObject.SetActive(false);
-        
-        
     }
-
-    
 
     private void Update()
 
