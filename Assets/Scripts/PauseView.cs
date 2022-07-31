@@ -12,16 +12,12 @@ public class PauseView : MonoBehaviour
             _pausePanel.gameObject.SetActive(true);
         }
 
-        if (Pause.Instance._isPaused == false)
-        {
-            _pausePanel.gameObject.SetActive(false);
-        }
+        else _pausePanel.gameObject.SetActive(false);
+        
+        
     }
 
-    private void Awake()
-    {
-        _pausePanel.gameObject.SetActive(false);
-    }
+    
 
     private void Update()
 

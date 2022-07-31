@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,8 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => _instance;
 
     [SerializeField] private Ball _ball;
-    [SerializeField] private TextMeshProUGUI _score;
-    [SerializeField] private TextMeshProUGUI _lifeGames;
+    
 
     private bool _isStarted;
 
@@ -42,8 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        _score.text = $"Score {Score}";
-        _lifeGames.text = $"Life {LifeGame}";
+        
 
         if (_isStarted)
         {
@@ -77,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
-        Score += score;
+        Score += score; 
     }
 
     public void PerformWin()
