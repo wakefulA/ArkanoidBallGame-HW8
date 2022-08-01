@@ -48,11 +48,10 @@ public class Block : MonoBehaviour
         if (_color.a <= 0)
             _spriteRenderer.color = Color.blue;
     }
-
+    
     private void OnDestroy()
     {
         OnDestroyed?.Invoke();
-
         GameManager.Instance.AddScore(_score);
     }
 

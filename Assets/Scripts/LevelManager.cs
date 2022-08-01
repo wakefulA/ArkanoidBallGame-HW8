@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-public class LevelManager:MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    
     private int _blocksCount;
 
     public event Action OnAllBlocksDestroyed;
@@ -12,14 +11,12 @@ public class LevelManager:MonoBehaviour
     {
         Block.OnCreated += BlockCreated;
         Block.OnDestroyed += BlockDestroyed;
-        
     }
 
     private void OnDestroy()
     {
         Block.OnDestroyed -= BlockDestroyed;
         Block.OnCreated -= BlockCreated;
-        
     }
 
     private void BlockCreated()
@@ -29,16 +26,11 @@ public class LevelManager:MonoBehaviour
 
     private void BlockDestroyed()
     {
-        
         _blocksCount--;
-        
+
         if (_blocksCount == 0)
         {
             OnAllBlocksDestroyed?.Invoke();
-         
         }
     }
-    
-    
 }
- 

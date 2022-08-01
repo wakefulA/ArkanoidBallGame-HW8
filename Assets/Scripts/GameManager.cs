@@ -1,13 +1,9 @@
-using UnityEngine;
-
-public class GameManager : SingletonMonoBehaviout<GameManager>
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     #region Variables
 
-    
     public int LifeGame;
-    
-    
+
     public bool _isStarted;
 
     #endregion
@@ -33,8 +29,6 @@ public class GameManager : SingletonMonoBehaviout<GameManager>
 
     #region Unity lifecycle
 
-    
-
     #endregion
 
 
@@ -42,20 +36,17 @@ public class GameManager : SingletonMonoBehaviout<GameManager>
 
     public void AddScore(int score)
     {
-        Score += score; 
+        Score += score;
     }
 
-    public void PerformWin()
+    private void PerformWin()
     {
-        Debug.LogError($"WIN!");
     }
 
     #endregion
 
 
     #region Private methods
-
-   
 
     #endregion
 
@@ -64,6 +55,5 @@ public class GameManager : SingletonMonoBehaviout<GameManager>
     {
         LifeGame--;
         _isStarted = false;
-        
     }
 }

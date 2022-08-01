@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
-public class Pause : SingletonMonoBehaviout<Pause>
+public class Pause : SingletonMonoBehaviour<Pause>
 {
-   
-    
     public bool _isPaused;
 
 
@@ -15,9 +13,19 @@ public class Pause : SingletonMonoBehaviout<Pause>
             TogglePause();
     }
 
-    
+    public void GameStop()
+    {
+        if (GameManager.Instance._isStarted == false)
+        {
+            return;
+        }
+
+        Time.timeScale = 0;
+    }
+
     #endregion
-    
+
+
     #region Private methods
 
     public void TogglePause()

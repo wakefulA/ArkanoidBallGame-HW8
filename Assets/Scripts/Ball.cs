@@ -23,35 +23,35 @@ public class Ball : MonoBehaviour
 
     [Range(0, 1)]
     [SerializeField] private float _yMax;
-    
+
     [SerializeField] public Ball _ball;
 
     #endregion
-    
-    
+
+
     private void Update()
     {
-
         if (GameManager.Instance._isStarted)
         {
             return;
         }
-        
+
         MoveWithPad();
         Stop();
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             StartBall();
         }
     }
-    
+
     private void StartBall()
     {
         GameManager.Instance._isStarted = true;
         StartMove();
     }
-    
+
+
     #region Unity lifecycle
 
     private void BallDirection()
@@ -64,7 +64,6 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         BallDirection();
-      
     }
 
     public void OnDrawGizmos()
@@ -83,7 +82,6 @@ public class Ball : MonoBehaviour
     private void StartMove()
     {
         _rb.velocity = _startDirection;
-        
     }
 
     private void MoveWithPad()
@@ -95,12 +93,10 @@ public class Ball : MonoBehaviour
     }
 
     #endregion
-    
+
+
     private void Stop()
     {
-       _rb.velocity = Vector2.zero;
-       
+        _rb.velocity = Vector2.zero;
     }
-
-    
 }

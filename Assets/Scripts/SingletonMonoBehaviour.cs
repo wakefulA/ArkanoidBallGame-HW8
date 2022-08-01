@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SingletonMonoBehaviout<T> : MonoBehaviour
+public class SingletonMonoBehaviour<T> : MonoBehaviour
 {
     #region Properties
 
@@ -24,8 +24,4 @@ public class SingletonMonoBehaviout<T> : MonoBehaviour
     }
 
     #endregion
-        
-    
 }
-
-
