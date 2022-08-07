@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Pad : MonoBehaviour
 {
@@ -7,7 +6,7 @@ public class Pad : MonoBehaviour
 
     private void Update()
     {
-        if (Pause.Instance._isPaused)
+        if (Pause.Instance.IsPaused)
             return;
         if (GameManager.Instance.LifeGame == 0)
             return;

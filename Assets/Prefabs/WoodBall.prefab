@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7981214754061612115}
   - component: {fileID: 697540456826822005}
   - component: {fileID: 1377114608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WoodBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,3 +117,5 @@ MonoBehaviour:
   _score: 10
   _sprites: []
   _spriteRenderer: {fileID: 7981214754061612115}
+  _pickUpPrefab: {fileID: 0}
+  _pickUpSpawnChanse: 1

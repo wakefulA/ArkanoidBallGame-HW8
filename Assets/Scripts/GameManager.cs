@@ -1,3 +1,5 @@
+using System;
+
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     #region Variables
@@ -5,6 +7,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int LifeGame;
 
     public bool _isStarted;
+
+    #endregion
+
+
+    #region Events
+
+    public event Action OnGameWon;
 
     #endregion
 
@@ -18,12 +27,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Start()
     {
-        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed += PerformWin;
+        LevelManager.Instance.OnAllBlocksDestroyed += PerformWin;
     }
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed -= PerformWin;
+        LevelManager.Instance.OnAllBlocksDestroyed -= PerformWin;
     }
 
 
@@ -34,13 +43,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     #region Public methods
 
-    public void AddScore(int score)
+    public void ChangeScore(int score)
     {
         Score += score;
     }
 
-    private void PerformWin()
+    public void PerformWin()
     {
+        OnGameWon?.Invoke();
     }
 
     #endregion

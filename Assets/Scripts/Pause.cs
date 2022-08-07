@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Pause : SingletonMonoBehaviour<Pause>
 {
-    public bool _isPaused;
+    public event Action<bool> OnPaused; 
+
+    public bool IsPaused { get; private set; }
 
 
     #region Unity lifecycle
@@ -30,8 +33,9 @@ public class Pause : SingletonMonoBehaviour<Pause>
 
     public void TogglePause()
     {
-        _isPaused = !_isPaused;
-        Time.timeScale = _isPaused ? 0 : 1;
+        IsPaused = !IsPaused;
+        Time.timeScale = IsPaused ? 0 : 1;
+        OnPaused?.Invoke((IsPaused));
     }
 
     #endregion

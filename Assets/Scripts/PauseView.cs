@@ -7,7 +7,7 @@ public class PauseView : MonoBehaviour
 
     private void PausePanel()
     {
-        if (Pause.Instance._isPaused == true)
+        if (Pause.Instance.IsPaused == true)
         {
             _pausePanel.gameObject.SetActive(true);
         }

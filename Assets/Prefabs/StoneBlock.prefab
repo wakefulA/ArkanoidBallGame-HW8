@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7559270571312045454}
   - component: {fileID: 7559270571312045455}
   - component: {fileID: 5066891121740283796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StoneBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,3 +127,5 @@ MonoBehaviour:
   _score: 20
   _sprites: []
   _spriteRenderer: {fileID: 7559270571312045454}
+  _pickUpPrefab: {fileID: 6828765283372693536, guid: ef848c95cdba80844b45ae525e7ea090, type: 3}
+  _pickUpSpawnChanse: 1

@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
     #region Variables
 
     private Vector2 _startDirection;
+    
 
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Pad _pad;
@@ -37,7 +38,7 @@ public class Ball : MonoBehaviour
         }
 
         MoveWithPad();
-        Stop();
+        ToDefaultState();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -63,6 +64,7 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
+        
         BallDirection();
     }
 
@@ -95,8 +97,10 @@ public class Ball : MonoBehaviour
     #endregion
 
 
-    private void Stop()
+    public void ToDefaultState()
     {
+        
         _rb.velocity = Vector2.zero;
+     
     }
 }

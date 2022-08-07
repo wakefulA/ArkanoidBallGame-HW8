@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3353958400626147479}
   - component: {fileID: 4331825737744295352}
   - component: {fileID: 2077267766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,3 +127,5 @@ MonoBehaviour:
   _score: 13
   _sprites: []
   _spriteRenderer: {fileID: 3353958400626147479}
+  _pickUpPrefab: {fileID: 0}
+  _pickUpSpawnChanse: 1
