@@ -1,10 +1,8 @@
-﻿using TMPro;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public class WinScreen : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _winPanel;
+    [SerializeField] private GameObject _winPanel;
 
     private void Awake()
     {
@@ -14,7 +12,6 @@ public class WinScreen : MonoBehaviour
     private void Start()
     {
         LevelManager.Instance.OnAllBlocksDestroyed += GameWon;
-        
     }
 
     private void OnDestroy()
@@ -27,7 +24,6 @@ public class WinScreen : MonoBehaviour
 
     private void GameWon()
     {
-        
         _winPanel.gameObject.SetActive(true);
     }
 }

@@ -1,7 +1,11 @@
 using System;
+using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
+    [SerializeField] private bool _needAutoPlay;
+
+
     #region Variables
 
     public int LifeGame;
@@ -20,6 +24,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     #region Properies
 
+    public bool NeedAutoPlay => _needAutoPlay;
+
     public int Score { get; private set; }
 
     #endregion
@@ -27,18 +33,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Start()
     {
-        LevelManager.Instance.OnAllBlocksDestroyed += PerformWin;
+        FindObjectOfType<LevelManager>().OnAllBlocksDestroyed += PerformWin;
     }
 
     private void OnDestroy()
     {
-        LevelManager.Instance.OnAllBlocksDestroyed -= PerformWin;
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null)
+            levelManager.OnAllBlocksDestroyed -= PerformWin;
+
     }
-
-
-    #region Unity lifecycle
-
-    #endregion
 
 
     #region Public methods
@@ -48,8 +52,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Score += score;
     }
 
-    public void PerformWin()
+    private void PerformWin()
     {
+        Debug.LogError($"WIN!");
+        
         OnGameWon?.Invoke();
     }
 

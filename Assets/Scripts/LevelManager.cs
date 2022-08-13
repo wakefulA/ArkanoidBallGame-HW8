@@ -21,11 +21,12 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     private void BlockCreated(Block block)
     {
         _blocksCount++;
+        
     }
 
-    private void BlockDestroyed(Block block, int score)
+    public void BlockDestroyed(Block block, int score)
     {
-        FindObjectOfType<GameManager>().ChangeScore(score: 0);
+        FindObjectOfType<GameManager>().ChangeScore(score);
         _blocksCount--;
 
         if (_blocksCount == 0)
