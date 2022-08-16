@@ -2,12 +2,20 @@
 
 public class Pad : MonoBehaviour
 {
+    [SerializeField] private Transform _transform;
+
+    [SerializeField] private Vector3 _minSize;
+
+    [SerializeField] private Vector3 _maxSize;
+
+
     #region Variables
 
     private Ball _ball;
 
     #endregion
-    
+
+
     public Vector3 StartPadSize { get; private set; }
 
 
@@ -24,7 +32,7 @@ public class Pad : MonoBehaviour
             return;
         if (GameManager.Instance.LifeGame == 0)
             return;
-        
+
 
         if (GameManager.Instance.NeedAutoPlay)
         {
@@ -35,12 +43,8 @@ public class Pad : MonoBehaviour
         {
             MoveWithMouse();
         }
-        
-        
-     
-        
     }
-    
+
     #endregion
 
 
@@ -58,26 +62,30 @@ public class Pad : MonoBehaviour
     private void MoveWithBall()
     {
         Vector3 ballPosition = _ball.transform.position;
-       
+
         Vector3 currentPosition = transform.position;
         currentPosition.x = ballPosition.x;
         transform.position = currentPosition;
     }
 
     #endregion
-    
+
+
     public void ChangeSizePad(float size)
     {
+        Vector3 actualSizePad = transform.localScale * size;
+        actualSizePad *= size;
+        if (actualSizePad.magnitude > _maxSize.magnitude)
+        {
+            actualSizePad = _maxSize;
+        }
 
-        float actualSizePad = gameObject.transform.localScale.x;
-        if (actualSizePad == size * StartPadSize.x)
-            return;
-        Pad[] pads = FindObjectsOfType<Pad>();
-        foreach (Pad pad in pads)
-            pad.transform.localScale *= size;
 
+        if (actualSizePad.magnitude > _minSize.magnitude)
+        {
+            actualSizePad = _minSize;
+        }
+
+        transform.localScale = actualSizePad;
     }
-
-   
-
 }

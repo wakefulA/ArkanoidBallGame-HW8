@@ -6,15 +6,17 @@ public class Block : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField] private GameObject _pickup;
+
     [Header("Block")]
     [SerializeField] private int _score;
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [Header("Pick Up")]
+    [Range(0f, 1f)]
     [SerializeField] private GameObject _pickUpPrefab;
-
-    [Range(0f, 1f)] // 0 - нул вер-ть 1 - 100% вер-ть 
+    [SerializeField] private PickUpInfo[] _pickUpInfoArray;
     [SerializeField] private float _pickUpSpawnChanse;
 
     private Color _color;
@@ -60,6 +62,17 @@ public class Block : MonoBehaviour
     {
         OnDestroyed?.Invoke(this, _score);
         GameManager.Instance.ChangeScore(_score);
+
+        Instantiate(_pickup, Vector3.one, Quaternion.identity);
+    }
+
+    private void OnValidate()
+    {
+        if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
+            return;
+
+        foreach (PickUpInfo pickUpInfo in _pickUpInfoArray)
+            pickUpInfo.UpdateName();
     }
 
     #endregion
@@ -69,19 +82,38 @@ public class Block : MonoBehaviour
 
     private void SpawnPickUp()
     {
-        if(_pickUpPrefab ==  null)
+        if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
             return;
-        
-        if (_pickUpPrefab == null)
-            return;
-
-
         float random = Random.Range(0f, 1f);
         if (random <= _pickUpSpawnChanse)
         {
-            Instantiate(_pickUpPrefab, transform.position, Quaternion.identity);
-            // TODO: Spawn
+            return;
         }
+
+        int chanceSum = 0;
+        foreach (PickUpInfo pickUpInfo in _pickUpInfoArray)
+        {
+            chanceSum += pickUpInfo.SpawnChance;
+        }
+
+        int randomChance = Random.Range(0, chanceSum);
+        int currentChance = 0;
+        int currentIndex = 0;
+        for (int i = 0; i < _pickUpInfoArray.Length; i++)
+        {
+            PickUpInfo pickUpInfo = _pickUpInfoArray[i];
+            currentChance += pickUpInfo.SpawnChance;
+
+            if (currentChance >= randomChance)
+            {
+                currentIndex = i;
+                break;
+            }
+        }
+
+
+        PickUpBase pickUpPrefab = _pickUpInfoArray[currentIndex].PickUpPrefab;
+        Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
     }
 
     #endregion

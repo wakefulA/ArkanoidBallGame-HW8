@@ -1,17 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
     #region Variables
 
-    private Vector2 _startDirection;
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Vector3 _minSize;
+    [SerializeField] private Vector3 _maxSize;
 
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Pad _pad;
     [SerializeField] private float _minspeed = 1;
-    
 
     [SerializeField] private float _speed = 10f;
 
@@ -28,30 +28,27 @@ public class Ball : MonoBehaviour
     [SerializeField] private float _yMax;
 
     [SerializeField] public Ball _ball;
-    
+
     public Vector3 StartBallSize { get; private set; }
 
- 
+    private Vector2 _startDirection;
 
     #endregion
 
 
     #region Properties
-    
 
     #endregion
 
 
     private void Start()
     {
-        if(GameManager.Instance.NeedAutoPlay)
+        if (GameManager.Instance.NeedAutoPlay)
             StartBall();
     }
 
     private void Update()
     {
-        
-   
         if (GameManager.Instance._isStarted)
         {
             return;
@@ -135,14 +132,19 @@ public class Ball : MonoBehaviour
 
     public void ChangeSizeBall(float size)
     {
+        Vector3 actualSizeBall = transform.localScale * size;
+        actualSizeBall *= size;
+        if (actualSizeBall.magnitude > _maxSize.magnitude)
+        {
+            actualSizeBall = _maxSize;
+        }
 
-        float actualSizeBall = gameObject.transform.localScale.x;
-        if (actualSizeBall == size * StartBallSize.x)
-            return;
-        Ball[] balls = FindObjectsOfType<Ball>();
-        foreach (Ball ball in balls)
-            ball.transform.localScale *= size;
 
+        if (actualSizeBall.magnitude > _minSize.magnitude)
+        {
+            actualSizeBall = _minSize;
+        }
+
+        transform.localScale = actualSizeBall;
     }
 }
-

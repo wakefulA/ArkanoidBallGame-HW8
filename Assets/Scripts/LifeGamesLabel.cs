@@ -1,10 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class LifeGamesLabel: MonoBehaviour
-    
+public class LifeGamesLabel : MonoBehaviour
+
 {
-    
     [SerializeField] private TextMeshProUGUI _lifeGames;
 
     private void Update()

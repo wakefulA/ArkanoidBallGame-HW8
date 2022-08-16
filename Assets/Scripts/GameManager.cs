@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    [SerializeField] private bool _needAutoPlay;
-
-
     #region Variables
+
+    [SerializeField] private bool _needAutoPlay;
 
     public int LifeGame;
 
@@ -28,8 +27,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public int Score { get; private set; }
 
+    public int Life { get; private set; }
+
     #endregion
 
+
+    #region Private methods
 
     private void Start()
     {
@@ -41,8 +44,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         if (levelManager != null)
             levelManager.OnAllBlocksDestroyed -= PerformWin;
-
     }
+
+    #endregion
 
 
     #region Public methods
@@ -55,21 +59,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void PerformWin()
     {
         Debug.LogError($"WIN!");
-        
+
         OnGameWon?.Invoke();
     }
-
-    #endregion
-
-
-    #region Private methods
-
-    #endregion
-
 
     public void LoseLife()
     {
         LifeGame--;
         _isStarted = false;
     }
+
+    public void LifeChange(int life)
+    {
+        LifeGame += life;
+    }
+
+    #endregion
 }
