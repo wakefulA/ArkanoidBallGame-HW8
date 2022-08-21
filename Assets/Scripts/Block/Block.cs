@@ -48,15 +48,14 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        SpawnPickUp();
-
-
-        _life--;
-        if (_life == 0)
-            Destroy(gameObject);
-        if (_color.a <= 0)
-            _spriteRenderer.color = Color.blue;
+        //change hp
+        // if(hp ==0)
+        //DestroyBlock();
+        
+        DestroyBlock();
     }
+
+   
 
     private void OnDestroy()
     {
@@ -74,6 +73,26 @@ public class Block : MonoBehaviour
         foreach (PickUpInfo pickUpInfo in _pickUpInfoArray)
             pickUpInfo.UpdateName();
     }
+
+
+    #region Public methods 
+
+    public virtual void DestroyBlock()
+    {
+        
+        SpawnPickUp();
+
+        _life--;
+        if (_life == 0)
+            Destroy(gameObject);
+        if (_color.a <= 0)
+            _spriteRenderer.color = Color.blue;
+        
+    }
+
+    #endregion
+    
+    
 
     #endregion
 
