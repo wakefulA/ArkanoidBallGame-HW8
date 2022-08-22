@@ -19,6 +19,10 @@ public class Block : MonoBehaviour
     [SerializeField] private PickUpInfo[] _pickUpInfoArray;
     [SerializeField] private float _pickUpSpawnChanse;
 
+    [Header("Music")]
+    [SerializeField] private AudioClip _audioClip;
+    
+
     private Color _color;
 
     #endregion
@@ -80,6 +84,8 @@ public class Block : MonoBehaviour
     public virtual void DestroyBlock()
     {
         
+       
+        AudioPlayer.Instance.PlaySound(_audioClip);
         SpawnPickUp();
 
         _life--;
@@ -87,6 +93,7 @@ public class Block : MonoBehaviour
             Destroy(gameObject);
         if (_color.a <= 0)
             _spriteRenderer.color = Color.blue;
+     
         
     }
 

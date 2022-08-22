@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
@@ -28,6 +29,9 @@ public class Ball : MonoBehaviour
     [SerializeField] private float _yMax;
 
     [SerializeField] public Ball _ball;
+
+    [Header("Music")]
+    [SerializeField] private AudioSource _audioSource;
 
     public Vector3 StartBallSize { get; private set; }
 
@@ -90,6 +94,11 @@ public class Ball : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + (Vector3) _startDirection);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3) _rb.velocity);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        _audioSource.Play();
     }
 
     #endregion

@@ -114,9 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1e103632024f6eb6460162a97c091e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickup: {fileID: 2831785546294710637, guid: 6234911a814b4384cb241afbbb6449cd, type: 3}
+  _pickup: {fileID: 2951808314990672636, guid: 93267c5d455997b4d89f1f4835804bcc, type: 3}
   _score: 10
   _sprites: []
   _spriteRenderer: {fileID: 7981214754061612115}
   _pickUpPrefab: {fileID: 0}
+  _pickUpInfoArray: []
   _pickUpSpawnChanse: 1
+  _audioClip: {fileID: 0}
